@@ -44,6 +44,6 @@ create policy "Conversation members call signals" on public.call_signals for sel
 create policy "Members create signals" on public.call_signals for insert to authenticated with check(sender_id=auth.uid() and exists(select 1 from public.conversation_members cm where cm.conversation_id=conversation_id and cm.user_id=auth.uid()));
 -- Private media bucket. Keep files private; issue short-lived signed URLs from authenticated server/client after policy checks.
 insert into storage.buckets(id,name,public) values('nexora-media','nexora-media',false) on conflict(id) do nothing;
-create policy "Authenticated users read media" on storage.objects for select to authenticated using(bucket_id='nexora-media');
+create policy "Owners read their private media" on storage.objects for select to authenticated using(bucket_id='nexora-media' and (storage.foldername(name))[1]=auth.uid()::text);
 create policy "Authenticated upload to own folder" on storage.objects for insert to authenticated with check(bucket_id='nexora-media' and (storage.foldername(name))[1]=auth.uid()::text);
 create policy "Users delete own media" on storage.objects for delete to authenticated using(bucket_id='nexora-media' and (storage.foldername(name))[1]=auth.uid()::text);
