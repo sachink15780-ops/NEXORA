@@ -17,6 +17,7 @@ jobs:
           node-version: '20'
       - uses: android-actions/setup-android@v3
       - run: npm install
+      - run: mkdir -p web && cp index.html app.js styles.css config.js manifest.json web/ && cp service-worker.js web/ || true
       - run: npx cap add android
       - run: npx cap sync android
       - run: cd android && ./gradlew assembleDebug
