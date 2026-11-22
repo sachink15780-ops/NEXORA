@@ -1,0 +1,8 @@
+{
+  "appId": "com.nexora.social",
+  "appName": "NEXORA",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
