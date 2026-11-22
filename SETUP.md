@@ -6,7 +6,7 @@ Original UI prototype with local browser demo features and privacy-first backend
 - Demo posts/messages are stored in this browser's local storage only; they are not synced and do not reach other users.
 - PWA manifest/offline shell and GitHub Actions Android debug APK workflow.
 
-## Backend activation (not yet connected to app)
+## Backend activation (auth UI is in the app; cloud features still need configuration)\n1. Create a Supabase project at https://supabase.com and copy the Project URL and anon/public key.\n2. Open config.js and paste those two public values. Never use the service-role key in client code.\n3. In Supabase Authentication settings, enable email/password and set site URL/redirect URLs to your published app URL.\n4. SQL Editor: run supabase/schema.sql. The signup profile trigger creates the profile after registration.\n\n## Backend activation (remaining cloud features)
 1. Create a Supabase project.
 2. SQL Editor: run `supabase/schema.sql`.
 3. Configure private media bucket/policies (included in SQL).
