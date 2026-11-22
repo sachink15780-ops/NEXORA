@@ -1,0 +1,12 @@
+{
+  "name": "NEXORA Social",
+  "short_name": "NEXORA",
+  "description": "Social app prototype",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08090c",
+  "theme_color": "#08090c",
+  "orientation": "portrait",
+  "icons": []
+}
